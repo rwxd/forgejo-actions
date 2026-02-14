@@ -1,0 +1,9 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>rwxd/renovate-config",
+        "github>rwxd/renovate-config:automerge-minor",
+        "github>rwxd/renovate-config:automerge-patch",
+        "github>rwxd/renovate-config:automerge-major"
+    ]
+}
