@@ -1,0 +1,32 @@
+name: 'Semantic Release'
+description: 'Run semantic-release for Forgejo/Gitea'
+
+inputs:
+  gitea_token:
+    description: 'Gitea/Forgejo token'
+    required: true
+  gitea_url:
+    description: 'Gitea/Forgejo server URL'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 25
+
+    - run: |
+        npm install -D \
+          semantic-release \
+          @semantic-release/changelog \
+          @semantic-release/git \
+          @saithodev/semantic-release-gitea \
+          conventional-changelog-conventionalcommits
+      shell: bash
+
+    - run: npx semantic-release
+      shell: bash
+      env:
+        GITEA_TOKEN: ${{ inputs.gitea_token }}
+        GITEA_URL: ${{ inputs.gitea_url }}
