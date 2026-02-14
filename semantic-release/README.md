@@ -11,4 +11,16 @@ Runs semantic-release for Forgejo/Gitea.
     gitea_url: ${{ github.server_url }}
 ```
 
-Requires `.releaserc.yml` and conventional commits.
+## Example .releaserc.yml
+
+```yaml
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - "@saithodev/semantic-release-gitea"
+
+branches:
+  - "main"
+```
+
+Requires conventional commits.
