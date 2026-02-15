@@ -1,0 +1,26 @@
+name: Build
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  semantic-release:
+    if: github.ref == 'refs/heads/main'
+    needs: evaluate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: https://github.com/actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run semantic-release
+        uses: https://${{ secrets.FORGEJO_TOKEN }}@git.chaops.de/rwxd/forgejo-actions/semantic-release@main
+        with:
+          gitea_token: ${{ secrets.FORGEJO_TOKEN }}
+          gitea_url: ${{ github.server_url }}
