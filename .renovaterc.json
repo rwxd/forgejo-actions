@@ -3,6 +3,8 @@
     "extends": [
         "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/default.json",
         "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/schedule/weekly.json",
+        "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/automerge/digest.json",
+        "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/automerge/pin.json",
         "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/automerge/patch.json",
         "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/automerge/minor.json",
         "https://git.chaops.de/rwxd/renovate-config/raw/branch/main/automerge/major.json"
