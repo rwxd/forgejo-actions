@@ -3,9 +3,13 @@ description: "Run prek (pre-commit) checks"
 
 inputs:
   args:
-    description: "Arguments to pass to prek"
+    description: "Arguments to pass to prek (overrides default command)"
     required: false
     default: "run --all-files --show-diff-on-failure"
+  extra_args:
+    description: "Extra arguments appended to the command"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
@@ -20,5 +24,5 @@ runs:
 
     - run: |
         source $HOME/.local/bin/env 2>/dev/null || true
-        prek ${{ inputs.args }}
+        prek ${{ inputs.args }} ${{ inputs.extra_args }}
       shell: bash
