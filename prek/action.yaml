@@ -5,7 +5,7 @@ inputs:
   args:
     description: "Arguments to pass to prek"
     required: false
-    default: "run --all-files"
+    default: "run --all-files --show-diff-on-failure"
 
 runs:
   using: "composite"
