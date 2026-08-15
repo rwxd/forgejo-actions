@@ -1,0 +1,24 @@
+name: "Prek"
+description: "Run prek (pre-commit) checks"
+
+inputs:
+  args:
+    description: "Arguments to pass to prek"
+    required: false
+    default: "run --all-files"
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        if ! command -v uv &> /dev/null; then
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          source $HOME/.local/bin/env
+        fi
+        uv tool install prek
+      shell: bash
+
+    - run: |
+        source $HOME/.local/bin/env 2>/dev/null || true
+        prek ${{ inputs.args }}
+      shell: bash
