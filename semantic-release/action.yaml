@@ -28,6 +28,15 @@ runs:
           conventional-changelog-conventionalcommits
       shell: bash
 
+    - run: |
+        host="${GITEA_URL#https://}"
+        host="${host%/}"
+        git config --global url."https://${GITEA_TOKEN}@${host}/".insteadOf "${GITEA_URL}/"
+      shell: bash
+      env:
+        GITEA_TOKEN: ${{ inputs.gitea_token }}
+        GITEA_URL: ${{ inputs.gitea_url }}
+
     - run: npx semantic-release
       shell: bash
       env:
